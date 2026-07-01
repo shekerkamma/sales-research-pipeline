@@ -254,18 +254,25 @@ def attach_doc_to_calendar(creds, event_id, doc_url):
 def main():
     print("[*] Starting Sales Research Pipeline...")
     
+    # Prompt the user for manual testing or fallback to calendar
+    domain = input("Enter company domain to research (e.g., apple.com) [Press Enter for Calendar Autopilot]: ").strip()
+    
     # Authenticate Google
     creds = get_google_credentials()
     
-    # Find next event
-    event, domain = get_next_calendar_event(creds)
-    if not event:
-        print("[-] Shutting down: No upcoming target events found.")
-        return
-        
+    event = None
     if not domain:
-        print("[-] Shutting down: Event found but could not parse a valid invitee domain.")
-        return
+        # Fallback to Calendar Autopilot
+        event, domain = get_next_calendar_event(creds)
+        if not event:
+            print("[-] Shutting down: No upcoming target events found.")
+            return
+            
+        if not domain:
+            print("[-] Shutting down: Event found but could not parse a valid invitee domain.")
+            return
+    else:
+        print(f"[+] Manual mode: Researching entered domain '{domain}'")
         
     # Execute Pipeline
     print(f"\n[*] Running research pipeline for: {domain}")
@@ -281,8 +288,9 @@ def main():
     # Create private Google Doc
     doc_id, doc_url = create_google_doc(creds, domain, brief_content)
     
-    # Attach link to calendar
-    attach_doc_to_calendar(creds, event.get('id'), doc_url)
+    # Attach link to calendar if running in Autopilot mode
+    if event:
+        attach_doc_to_calendar(creds, event.get('id'), doc_url)
     
     print("\n[+] Pipeline execution completed successfully!")
     print(f"    Private Brief Link: {doc_url}")
