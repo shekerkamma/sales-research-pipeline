@@ -138,8 +138,8 @@ def scrape_with_firecrawl(domain):
     try:
         print(f"[+] Crawling homepage of https://{domain} via Firecrawl...")
         app = FirecrawlApp(api_key=api_key)
-        scrape_result = app.scrape_url(f"https://{domain}", params={'formats': ['markdown']})
-        return scrape_result.get('markdown', 'No markdown content returned.')
+        scrape_result = app.scrape(f"https://{domain}", formats=['markdown'])
+        return scrape_result.markdown if hasattr(scrape_result, 'markdown') else str(scrape_result)
     except Exception as e:
         print(f"[-] Error scraping website with Firecrawl: {e}")
         return f"Error during Firecrawl scraping: {e}"
@@ -154,7 +154,7 @@ def synthesize_brief(domain, search_data, crawl_data):
     try:
         print("[+] Synthesizing sales briefing using Gemini...")
         genai.configure(api_key=gemini_key)
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        model = genai.GenerativeModel('gemini-3.5-flash')
         
         prompt = f"""
         You are a senior pre-sales intelligence agent. Synthesize a brief for the company domain: {domain}.
