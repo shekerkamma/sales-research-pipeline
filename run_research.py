@@ -2,6 +2,7 @@ import os
 import re
 import sys
 import datetime
+from urllib.parse import urlparse
 from dotenv import load_dotenv
 
 # Google Client APIs
@@ -251,6 +252,23 @@ def attach_doc_to_calendar(creds, event_id, doc_url):
     service.events().update(calendarId='primary', eventId=event_id, body=event).execute()
     print("[+] Successfully updated calendar event description with private brief link.")
 
+def clean_domain(input_str):
+    """Cleans an input URL or domain string to extract the raw domain name."""
+    if not input_str:
+        return ""
+    # Add scheme if not present to allow urlparse to process correctly
+    if not input_str.startswith(('http://', 'https://')):
+        input_str = 'https://' + input_str
+    
+    parsed = urlparse(input_str)
+    domain = parsed.netloc
+    
+    # Strip subdomains like 'www.' if present
+    if domain.startswith('www.'):
+        domain = domain[4:]
+        
+    return domain
+
 def main():
     print("[*] Starting Sales Research Pipeline...")
     
@@ -272,6 +290,7 @@ def main():
             print("[-] Shutting down: Event found but could not parse a valid invitee domain.")
             return
     else:
+        domain = clean_domain(domain)
         print(f"[+] Manual mode: Researching entered domain '{domain}'")
         
     # Execute Pipeline
