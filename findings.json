@@ -1,0 +1,62 @@
+{
+  "company": "Toyota",
+  "domain": "Situation Assessment",
+  "headline": "Friction in digital specials and B2B fleet inquiries creates conversion leaks.",
+  "executive_read": "Toyota's 2026 campaigns are driving high volume for core SUV, truck, and EV models. However, checkout loops and generic contact forms introduce friction for lease shoppers and B2B buyers. Activating conversational qualification and real-time lead routing will capture high-intent buyers.",
+  "key_findings": [
+    "Active campaigns for 2026 4Runner ($409/mo) and Grand Highlander ($449/mo) direct users to static specials tables.",
+    "Aggressive financing rates like 3.99% for Tacoma and 0% for bZ EV series drive strong retail and fleet interest.",
+    "Form redirections and ZIP lookup requirements add unnecessary drop-off points for digital buyers.",
+    "Commercial fleet buyers are routed through delayed general dealer funnels, stalling high-value sales."
+  ],
+  "slides": [
+    {
+      "type": "table",
+      "title": "Fact Base: Active Campaigns & Finance Terms",
+      "headers": ["Model & Category", "Lease / Financing Offer", "Digital Flow Bottleneck"],
+      "rows": [
+        ["2026 4Runner (Off-Road SUV)", "$409/mo for 36 mos ($3,699 down)", "Redirects from specs to static tables"],
+        ["2026 Grand Highlander (Family SUV)", "$449/mo for 36 mos ($4,639 down)", "Checkout redirects to regional dealer tables"],
+        ["2026 Tacoma (Pickup Truck)", "3.99% APR financing for 48 months", "No direct fleet pre-qualification portal"],
+        ["2026 bZ Series (Electric EV)", "0% APR financing for 72 months", "Complex terms require general dealer forms"]
+      ]
+    },
+    {
+      "type": "split",
+      "title": "Lead Capture: Current State vs. AI Integration",
+      "left_title": "CURRENT STATE (HIGH FRICTION)",
+      "left_bullets": [
+        "Users manually match model specs to local lease specials.",
+        "B2B fleet buyers route through the generic dealer inquiry funnel.",
+        "Lead response times average 24h to 48h, leading to competitor leaks."
+      ],
+      "right_title": "PROPOSED PILOT (AI ENGAGEMENT)",
+      "right_bullets": [
+        "Deploy conversational lease assistant on specials pages.",
+        "Pre-qualify fleet intent dynamically and route directly to CRM.",
+        "Reduce lead response time to less than 5 minutes."
+      ]
+    },
+    {
+      "type": "bullets",
+      "title": "Proposed Action Plan & Target Outcomes",
+      "bullets": [
+        "Action 1: Deploy interactive pre-qualification widget on regional lease special pages. Owner: Digital Marketing Director. Date: Q3 2026. Success Metric: +18% search-to-lead rate.",
+        "Action 2: Automate commercial lead-routing loops for B2B fleet buyer inquiries. Owner: Sales Operations Lead. Date: Q3 2026. Success Metric: Response time < 5 minutes.",
+        "Action 3: Trigger CRM email campaigns for users dropping out of configuration checkouts. Owner: CRM Specialist. Date: Q4 2026. Success Metric: 12% re-engagement."
+      ]
+    },
+    {
+      "type": "quotes_grid",
+      "title": "Customer & Fleet Feedback Signals",
+      "quotes": [
+        "Why does every lease offer require entering my ZIP code only to redirect to an error page?",
+        "Trying to get a bulk fleet quote for Tacomas is a nightmare — had to submit 3 forms and wait 2 days.",
+        "Toyota financing rates are great, but the checkout calculator doesn't show local inventory availability.",
+        "GRMN Corolla site lists 'learn more' but links directly to standard dealer search pages.",
+        "The bZ EV 0% APR deal is incredible, but calculating the trade-in credit takes hours.",
+        "It is impossible to get a straight answer on fleet pricing without going to a local dealer in person."
+      ]
+    }
+  ]
+}
